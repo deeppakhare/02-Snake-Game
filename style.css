@@ -12,7 +12,8 @@ body {
 
 :root{
     /* Background Color */
-    --bg-primary-color: rgb(22, 22, 22);
+    --bg-primary-color: rgb(38, 38, 38);
+    --bg-fill-color: hotpink;
 
     /* Text Color */
     --text-primary-color: #f0f0f0;
@@ -54,7 +55,7 @@ section {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: rgb(30, 30, 95);
+    background-color: rgb(12, 12, 32);
     gap: var(--space-lg);
 }
 
@@ -74,12 +75,16 @@ section .infos {
     border: 1px solid var(--border-primary-color);
     flex-grow: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
 }
 
 .block {
-    width: 30px;
-    height: 30px;
+    /* width: 30px;
+    height: 30px; */
     border: 1px solid var(--bg-primary-color);
+}
+
+.fill {
+    background-color: var(--bg-fill-color);
 }
