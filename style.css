@@ -92,6 +92,7 @@ section .infos {
     /* width: 30px;
     height: 30px; */
     border: 1px solid var(--bg-primary-color);
+    border-radius: 50%;
 }
 
 .fill {
