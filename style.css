@@ -14,6 +14,7 @@ body {
     /* Background Color */
     --bg-primary-color: rgb(38, 38, 38);
     --bg-fill-color: hotpink;
+    --bg-food-color: red;
 
     /* Text Color */
     --text-primary-color: #f0f0f0;
@@ -87,4 +88,8 @@ section .infos {
 
 .fill {
     background-color: var(--bg-fill-color);
+}
+
+.food {
+    background-color: var(--bg-food-color);
 }

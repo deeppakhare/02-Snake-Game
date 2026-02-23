@@ -7,7 +7,7 @@ const rows = Math.floor(board.clientHeight / blockHeight);
 
 let intervalId = null;
 let food = {
-    x:Math.floor(Math.random() * rows), y:Math.floor(Math.random() * cols)
+    x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols)
 }
 
 
@@ -34,14 +34,9 @@ for (let row = 0; row < rows; row++) {
 }
 
 function render() {
-    snake.forEach(segment => {
-        blocks[`${segment.x}-${segment.y}`].classList.add("fill");
-    })
-}
-
-intervalId = setInterval(() => {
-
     let head = null;
+
+    blocks[`${food.x}-${food.y}`].classList.add("food");
 
     if (direction === "left") {
         head = { x: snake[0].x, y: snake[0].y - 1 }
@@ -58,6 +53,18 @@ intervalId = setInterval(() => {
         clearInterval(intervalId);
     }
 
+    if (head.x == food.x && head.y == food.y) {
+        blocks[`${food.x}-${food.y}`].classList.remove("food");
+
+        food = {
+            x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols)
+        }
+
+        blocks[`${food.x}-${food.y}`].classList.add("food");
+
+        snake.unshift(head)
+    }
+
     snake.forEach(segment => {
         blocks[`${segment.x}-${segment.y}`].classList.remove("fill");
     })
@@ -65,10 +72,19 @@ intervalId = setInterval(() => {
     snake.unshift(head)
     snake.pop()
 
+    snake.forEach(segment => {
+        blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+    })
+}
+
+intervalId = setInterval(() => {
+
+
+
     render()
 }, 400);
 
-addEventListener("keydown",(event) => {
+addEventListener("keydown", (event) => {
     if (event.key == "ArrowUp") {
         direction = "up"
     } else if (event.key == "ArrowDown") {
@@ -78,7 +94,7 @@ addEventListener("keydown",(event) => {
     } else if (event.key == "ArrowRight") {
         direction = "right"
     }
-    
+
 })
 
 // console.log(board.clientHeight);
